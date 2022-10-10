@@ -1,3 +1,4 @@
+import 'package:app_culinaria/components/meal/meal_item.dart';
 import 'package:flutter/material.dart';
 import '../models/category.dart';
 import '../data/dummy_data.dart';
@@ -20,8 +21,8 @@ class CategoriesMealsScreen extends StatelessWidget {
       body: ListView.builder(
           itemCount: categoryMeal.length,
           itemBuilder: (BuildContext context, int index) {
-            return Text(
-              categoryMeal.elementAt(index).title.toString(),
+            return MealItem(
+              meal: categoryMeal[index],
             );
           }),
     );
