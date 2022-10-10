@@ -1,6 +1,6 @@
-import 'package:app_culinaria/models/category.dart';
-import 'package:app_culinaria/screens/categories_meals_sceens.dart';
 import 'package:flutter/material.dart';
+import '../models/category.dart';
+import '../screens/categories_meals_sceens.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -14,7 +14,9 @@ class CategoryItem extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) {
-          return const CategoriesMealsScreen();
+          return CategoriesMealsScreen(
+            category: category,
+          );
         },
       ),
     );
