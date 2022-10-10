@@ -12,6 +12,7 @@ class CategoriesScreens extends StatelessWidget {
         title: const Text('App de Culinária'),
       ),
       body: GridView(
+        padding: const EdgeInsets.all(25),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
