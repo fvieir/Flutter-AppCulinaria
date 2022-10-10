@@ -1,5 +1,6 @@
 import 'package:app_culinaria/screens/categories_meals_sceens.dart';
 import 'package:app_culinaria/screens/categories_screens.dart';
+import 'package:app_culinaria/screens/meal_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'utils/routes/app_routes.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.home: (context) => const CategoriesScreens(),
         AppRoutes.categoriesMeals: (context) => const CategoriesMealsScreen(),
+        AppRoutes.mealDetails: (context) => const MealDetailScreen(),
       },
     );
   }

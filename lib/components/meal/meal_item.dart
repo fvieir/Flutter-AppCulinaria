@@ -1,3 +1,4 @@
+import 'package:app_culinaria/utils/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:app_culinaria/models/meal.dart';
 
@@ -9,12 +10,17 @@ class MealItem extends StatelessWidget {
     super.key,
   });
 
-  void _selectMeal() {}
+  void _selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      AppRoutes.mealDetails,
+      arguments: meal,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: _selectMeal,
+      onTap: () => _selectMeal(context),
       child: Card(
         elevation: 4,
         shape: RoundedRectangleBorder(
