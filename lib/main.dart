@@ -1,6 +1,7 @@
 import 'package:app_culinaria/screens/categories_meals_sceens.dart';
 import 'package:app_culinaria/screens/categories_screens.dart';
 import 'package:app_culinaria/screens/meal_details_screen.dart';
+import 'package:app_culinaria/screens/settings_screen.dart';
 import 'package:app_culinaria/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 import 'utils/routes/app_routes.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.home: (context) => const TabsScreen(),
         AppRoutes.categoriesMeals: (context) => const CategoriesMealsScreen(),
         AppRoutes.mealDetails: (context) => const MealDetailScreen(),
+        AppRoutes.settings: (context) => const SettingsScreen(),
       },
       onUnknownRoute: (settings) {
         // Quando não existir rota sera redirecionanda para tela inicial.
