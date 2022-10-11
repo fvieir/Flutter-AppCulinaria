@@ -32,6 +32,14 @@ class MyApp extends StatelessWidget {
         AppRoutes.categoriesMeals: (context) => const CategoriesMealsScreen(),
         AppRoutes.mealDetails: (context) => const MealDetailScreen(),
       },
+      onUnknownRoute: (settings) {
+        // Quando não existir rota sera redirecionanda para tela inicial.
+        return MaterialPageRoute(
+          builder: (_) {
+            return const CategoriesScreens();
+          },
+        );
+      },
     );
   }
 }
