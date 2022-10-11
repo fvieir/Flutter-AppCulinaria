@@ -1,3 +1,4 @@
+import 'package:app_culinaria/components/drawer/main_drawer.dart';
 import 'package:app_culinaria/screens/categories_screens.dart';
 import 'package:app_culinaria/screens/favorite_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(_screens[_selectScreenIndex]['title'] as String),
       ),
+      drawer: const MainDrawer(),
       body: _screens[_selectScreenIndex]['screen'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
