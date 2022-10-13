@@ -32,6 +32,11 @@ class MealDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final meal = ModalRoute.of(context)!.settings.arguments as Meal;
+
+    void favoritePush() {
+      Navigator.of(context).pop(meal.title);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
@@ -93,8 +98,14 @@ class MealDetailScreen extends StatelessWidget {
                   );
                 },
               ),
-            )
+            ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: favoritePush,
+        child: const Icon(
+          Icons.star,
         ),
       ),
     );
