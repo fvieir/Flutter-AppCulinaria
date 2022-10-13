@@ -1,3 +1,4 @@
+import 'package:app_culinaria/models/settings.dart';
 import 'package:app_culinaria/screens/categories_meals_sceens.dart';
 import 'package:app_culinaria/screens/categories_screens.dart';
 import 'package:app_culinaria/screens/meal_details_screen.dart';
@@ -18,7 +19,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final List<Meal> _avaibleMeals = dummyMeals;
+  List<Meal> _avaibleMeals = dummyMeals;
+
+  void filterMeals(Settings settings) {
+    setState(() {
+      _avaibleMeals = dummyMeals.where((meal) {
+        final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
+        final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
+        final filterVegan = settings.isVegan && !meal.isVegan;
+        final filterVegararian = settings.isVegetarian && !meal.isVegetarian;
+
+        return !filterGluten &&
+            !filterLactose &&
+            !filterVegan &&
+            !filterVegararian;
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +61,9 @@ class _MyAppState extends State<MyApp> {
               meals: _avaibleMeals,
             ),
         AppRoutes.mealDetails: (context) => const MealDetailScreen(),
-        AppRoutes.settings: (context) => const SettingsScreen(),
+        AppRoutes.settings: (context) => SettingsScreen(
+              filterMeals: filterMeals,
+            ),
       },
       onUnknownRoute: (settings) {
         // Quando não existir rota sera redirecionanda para tela inicial.

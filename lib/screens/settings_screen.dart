@@ -3,7 +3,9 @@ import 'package:app_culinaria/models/settings.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+  final void Function(Settings) filterMeals;
+
+  const SettingsScreen({required this.filterMeals, super.key});
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -16,13 +18,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
     String title,
     String subtitle,
     value,
-    Function(bool) onChanged,
+    Function(bool) onChangedReceived,
   ) {
     return SwitchListTile.adaptive(
       title: Text(title),
       subtitle: Text(subtitle),
       value: value,
-      onChanged: onChanged,
+      onChanged: (value) {
+        onChangedReceived(value);
+        widget.filterMeals(settings);
+      },
     );
   }
 
