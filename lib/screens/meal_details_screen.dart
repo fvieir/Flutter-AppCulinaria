@@ -2,7 +2,14 @@ import 'package:app_culinaria/models/meal.dart';
 import 'package:flutter/material.dart';
 
 class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({super.key});
+  final void Function(Meal)? toggleFavorite;
+  final bool Function(Meal) isFavorite;
+
+  const MealDetailScreen({
+    this.toggleFavorite,
+    required this.isFavorite,
+    super.key,
+  });
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
@@ -33,9 +40,10 @@ class MealDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final meal = ModalRoute.of(context)!.settings.arguments as Meal;
 
-    void favoritePush() {
-      Navigator.of(context).pop(meal.title);
-    }
+    // Enviar dados para tela anterior
+    // void favoritePush() {
+    //   Navigator.of(context).pop(meal.title);
+    // }
 
     return Scaffold(
       appBar: AppBar(
@@ -103,9 +111,9 @@ class MealDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: favoritePush,
-        child: const Icon(
-          Icons.star,
+        onPressed: () => toggleFavorite!(meal),
+        child: Icon(
+          isFavorite(meal) ? Icons.star_border : Icons.star,
         ),
       ),
     );

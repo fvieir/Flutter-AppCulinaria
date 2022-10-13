@@ -1,14 +1,23 @@
+import 'package:app_culinaria/components/meal/meal_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import '../models/meal.dart';
 
 class FavoriteScreen extends StatelessWidget {
-  const FavoriteScreen({super.key});
+  final List<Meal>? favoriteMeals;
+  
+  const FavoriteScreen({this.favoriteMeals, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Favoritos'),
-    );
+    return favoriteMeals!.isEmpty
+        ? const Center(
+            child: Text('Favoritos'),
+          )
+        : ListView.builder(
+            itemCount: favoriteMeals!.length,
+            itemBuilder: (context, index) {
+              return MealItem(meal: favoriteMeals![index]);
+            },
+          );
   }
 }
